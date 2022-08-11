@@ -11,7 +11,13 @@ export default function Homepage() {
         setDisplayNote(displayNote => JSON.parse(localStorage.getItem("notes")))
     },[])
     // create function to move to new page to view and edit specific note
-    const goUpdate = (id) => navigate(`updatenote/${id}`)
+    const goUpdate = (id) => navigate(`update/${id}`)
+    const goDelete = (id) => {
+        let cleanList = displayNote.filter(item => {
+            return item.id !== id
+        })
+        console.log(cleanList)
+    }
     return (
         <div>
             <h1>Homepage</h1>
@@ -21,6 +27,7 @@ export default function Homepage() {
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
                     <button onClick={() => goUpdate(item.id)}>Edit</button>
+                    <button onClick={() => goDelete(item.id)}>Delete</button>
                     <hr />
                 </div>
                 )
