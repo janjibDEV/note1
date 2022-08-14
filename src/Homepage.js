@@ -6,17 +6,19 @@ export default function Homepage() {
     let navigate = useNavigate()
     // create state to display list of notes
     const [displayNote, setDisplayNote] = useState([])
-    // get list of notes from local storage every the page is load
-    useEffect(()=>{
+    // get list of notes from local storage everytime the page is load
+    useEffect(() => {
         setDisplayNote(displayNote => JSON.parse(localStorage.getItem("notes")))
-    },[])
+    }, [])
     // create function to move to new page to view and edit specific note
     const goUpdate = (id) => navigate(`update/${id}`)
     const goDelete = (id) => {
+        // filter the list from deleted note using id
         let cleanList = displayNote.filter(item => {
             return item.id !== id
         })
-        console.log(cleanList)
+        localStorage.setItem("notes",JSON.stringify(cleanList))
+        setDisplayNote(displayNote => cleanList)
     }
     return (
         <div>

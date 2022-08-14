@@ -6,23 +6,25 @@ function UpdateNote() {
   let {noteID} = useParams()
   let navigate = useNavigate()
   const [note, setNote] = useState({id:noteID, title:"",text:""})
+
   const fetchSelectedNote = (id) => {
     let notesArr = JSON.parse(localStorage.getItem("notes"))
     let editNote = {}
     // search for the respective note using ID
     for (let i = 0; i < notesArr.length; i++) {
-      if (notesArr[i].id == id) {
+      if (notesArr[i].id === id) {
         editNote = notesArr[i]
       }
     }
     setNote(note => editNote)
   }
+
   const updateNote = (id) => {
     // get list of notes from localStorage
     let notesArr = JSON.parse(localStorage.getItem("notes"))
     // search for the respective note using ID
     for (let i = 0; i < notesArr.length; i++) {
-      if (notesArr[i].id == id) {
+      if (notesArr[i].id === id) {
         notesArr[i].title = note.title
         notesArr[i].text = note.text
       }
@@ -32,6 +34,7 @@ function UpdateNote() {
     // return to homepage
     navigate("/")
   }
+
   useEffect(()=>{
     fetchSelectedNote(noteID)
     // run when noteID change
