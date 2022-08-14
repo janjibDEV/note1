@@ -1,8 +1,5 @@
-.App{
-  display: flex;
-  flex-direction: column;
-}
-textarea{
-  height: 512px;
-  width: 512px;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

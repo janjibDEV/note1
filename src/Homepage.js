@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Button } from 'react-bootstrap';
 
 export default function Homepage() {
     let navigate = useNavigate()
@@ -21,20 +24,24 @@ export default function Homepage() {
         setDisplayNote(displayNote => cleanList)
     }
     return (
-        <div>
-            <h1>Homepage</h1>
-            {displayNote.map(item => {
+        <Container className='m-5'>
+            <h1>Note 1</h1>
+            <Row className='m-5'>
+            {displayNote && displayNote.map(item => {
                 return (
-                <div key={item.id}>
+                <Col key={item.id}>
                     <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                    <button onClick={() => goUpdate(item.id)}>Edit</button>
-                    <button onClick={() => goDelete(item.id)}>Delete</button>
-                    <hr />
-                </div>
+                    <Button className="m-3" variant="primary" onClick={() => goUpdate(item.id)}>Edit</Button>
+                    <Button className="m-3" variant="danger" onClick={() => goDelete(item.id)}>Delete</Button>
+                </Col>
                 )
             })}
-            <Link to="/app">New Note</Link>
-        </div>
+            </Row>
+            <Row>
+                <Col>
+                    <Button variant="success" onClick={() => navigate("/app")}>New Note</Button>
+                </Col>
+            </Row>
+        </Container>
     )
 }
