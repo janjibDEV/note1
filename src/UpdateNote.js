@@ -82,6 +82,7 @@ function UpdateNote() {
           <Form.Control
           as="textarea"
           size="lg"
+          rows={8}
           placeholder='Write Something' 
           value={noteDetails.text} 
           onChange={e => setNoteDetails({...noteDetails,text:e.target.value})}

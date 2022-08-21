@@ -25,21 +25,21 @@ export default function Homepage() {
     }
     return (
         <Container className='m-5'>
-            <h1>Note 1</h1>
-            <Row className='m-5'>
+            <h1 className='title'>Note 1</h1>
+            <div className='m-5 d-flex flex-wrap'>
             {displayNote && displayNote.map(item => {
                 return (
-                <Col key={item.id}>
+                <div key={item.id} className="m-3 notebox p-4">
                     <h3>{item.title}</h3>
-                    <Button className="m-3" variant="primary" onClick={() => goUpdate(item.id)}>Edit</Button>
-                    <Button className="m-3" variant="danger" onClick={() => goDelete(item.id)}>Delete</Button>
-                </Col>
+                    <Button className="m-3"  onClick={() => goUpdate(item.id)}><i className="fa-solid fa-pen-to-square"></i></Button>
+                    <Button className="m-3"  onClick={() => goDelete(item.id)}><i class="fa-solid fa-trash"></i></Button>
+                </div>
                 )
             })}
-            </Row>
+            </div>
             <Row>
                 <Col>
-                    <Button variant="success" onClick={() => navigate("/app")}>New Note</Button>
+                    <Button className='create-button' onClick={() => navigate("/app")}>New Note</Button>
                 </Col>
             </Row>
         </Container>

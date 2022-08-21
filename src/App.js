@@ -55,6 +55,7 @@ function App() {
           as="textarea"
           size="lg"
           placeholder='Write Something' 
+          rows={8}
           value={noteDetails.text} 
           onChange={e => setNoteDetails({...noteDetails,text:e.target.value})}
         />

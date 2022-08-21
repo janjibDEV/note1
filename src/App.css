@@ -1,5 +1,29 @@
+/* Regular 400
+Medium 500
+Bold 700 */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.notebox{
+  border: 4px solid black;
+  border-radius: 15px;
+  background-color: #fffffe;
+}
+
+body{
+  background-color: #e3f6f5;
+}
+.title{
+  font-weight: 700;
+  color: #272343;
+}
+
+.create-button{
+  background-color: #ffd803;
+  border: none;
+  color: #272343;
 }
